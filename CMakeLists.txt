@@ -15,3 +15,18 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 add_executable(example ../src/example.cpp)
 target_link_libraries(example ${OpenCV_LIBS})
+
+enable_testing()
+
+add_executable(
+  test-example
+  ../tests/test-example.cpp
+)
+target_link_libraries(
+  test-example
+  GTest::gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(test-example)
+
