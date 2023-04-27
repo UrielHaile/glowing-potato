@@ -12,3 +12,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON )
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
 include_directories(${OpenCV_INCLUDE_DIRS})
+
+add_executable(example ../src/example.cpp)
+target_link_libraries(example ${OpenCV_LIBS})
