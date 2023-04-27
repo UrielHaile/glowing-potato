@@ -1,0 +1,26 @@
+name: Run action
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ls
+      - run: sudo apt install libopencv-dev 
+      - run: sudo apt install libgtest-dev 
+      - run: mkdir build
+      - name: Configure projects
+        working-directory: ./build
+        run: cmake ./..
+      - name: Compile project
+        working-directory: ./build
+        run: make
+      - name: Run test
+        working-directory: ./build
+        run: make test
+      
